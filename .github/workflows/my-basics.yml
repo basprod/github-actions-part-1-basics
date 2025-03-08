@@ -4,7 +4,9 @@
 #Copyleft (c) by Asan Bupeshov 2025.
 #---------------------------------------
 name: My-Github_Actions-Basics
-
+env:
+  APPLICATION_NAME   : "Myflask"
+  DEPLOY_PACKAGE_NAME: "flask-deploy-version-${{ github.sha }}"
 on:
   push:
     branches:
@@ -13,14 +15,24 @@ on:
 jobs:
   my_testing:
     runs-on: ubuntu-latest
+  
     steps:
     - name: Print HELLO Message in TESTING
       run : echo "Hello world from testing"
-
+      
+    - name: Execure few commands
+      run : |
+        echo "HELLO message 1"
+        echo "Hello message 2"
+        echo "Application name: ${{ env.APPLICATION_NAME }}"
 
   my_deploy:
     runs-on: ubuntu-latest
     needs: [my_testing]
+   
     steps:
      - name: Print HELLO Message IN DEPLOY
        run : echo "Hello world from Deploy job"
+
+     - name: Printing DEPLOYMENT package
+       run : echo "DEPLOY package name is ${{ env.DEPLOY_PACKAGE_NAME }}
