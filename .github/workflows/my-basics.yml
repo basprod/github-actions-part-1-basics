@@ -14,7 +14,7 @@ on:
 
 jobs:
   my_testing:
-    runs-on: ubuntu-latestдjhsabdjkhasbjhda
+    runs-on: ubuntu-latest
   
     steps:
     - name: Print HELLO Message in TESTING
